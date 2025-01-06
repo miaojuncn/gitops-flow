@@ -46,14 +46,14 @@ jobs:
       - name: Update image version in related manifests
         uses: fjogeleit/yaml-update-action@main
         with:
-          valueFile: 'backend/backend.yaml'
+          valueFile: 'backend/deployment.yaml'
           propertyPath: 'spec.template.spec.containers[0].image'
           value: ${{ env.REGISTRY }}/mj-mirror/backend:${{ steps.vars.outputs.sha_short }}
           repository: miaojuncn/gitops-manifests
-          branch: dev
-          targetBranch: main
-          createPR: true
-#          commitChange: true
+          branch: main
+#          targetBranch: main
+#          createPR: true
+          commitChange: true
           message: 'Update image version to ${{ steps.vars.outputs.sha_short }}'
           token: ${{ secrets.TOKEN }}
           workDir: gitops-manifests
