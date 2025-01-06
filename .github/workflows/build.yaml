@@ -49,10 +49,10 @@ jobs:
           valueFile: 'backend/backend.yaml'
           propertyPath: 'spec.template.spec.containers[0].image'
           value: ${{ env.REGISTRY }}/mj-mirror/backend:${{ steps.vars.outputs.sha_short }}
-          updateFile: true
           repository: miaojuncn/gitops-manifests
-          branch: main
-          commitChange: true
-          workDir: gitops-manifests
+          branch: dev
+          targetBranch: main
+          createPR: true
+#          commitChange: true
           message: 'Update image version to ${{ steps.vars.outputs.sha_short }}'
           token: ${{ secrets.TOKEN }}
