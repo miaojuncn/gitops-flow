@@ -50,6 +50,7 @@ jobs:
           propertyPath: 'spec.template.spec.containers[0].image'
           value: ${{ env.REGISTRY }}/mj-mirror/backend:${{ steps.vars.outputs.sha_short }}
           repository: miaojuncn/gitops-manifests
+          branch: main
           workDir: gitops-manifests
           message: 'Update image version to ${{ steps.vars.outputs.sha_short }}'
           token: ${{ secrets.TOKEN }}
