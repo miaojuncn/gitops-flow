@@ -51,6 +51,7 @@ jobs:
           value: ${{ env.REGISTRY }}/mj-mirror/backend:${{ steps.vars.outputs.sha_short }}
           repository: miaojuncn/gitops-manifests
           branch: main
+          commitChange: true
           workDir: gitops-manifests
           message: 'Update image version to ${{ steps.vars.outputs.sha_short }}'
           token: ${{ secrets.TOKEN }}
