@@ -49,6 +49,7 @@ jobs:
           valueFile: 'backend/backend.yaml'
           propertyPath: 'spec.template.spec.containers[0].image'
           value: ${{ env.REGISTRY }}/mj-mirror/backend:${{ steps.vars.outputs.sha_short }}
+          updateFile: true
           repository: miaojuncn/gitops-manifests
           branch: main
           commitChange: true
