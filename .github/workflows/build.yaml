@@ -36,3 +36,20 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ${{ env.REGISTRY }}/mj-mirror/backend:${{ steps.vars.outputs.sha_short }}
+
+      - name: Checkout Manifests
+        uses: actions/checkout@v4
+        with:
+          repository: miaojuncn/gitops-manifests
+          path: gitops-manifests
+
+      - name: Update image version in related manifests
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          valueFile: 'backend/backend.yaml'
+          propertyPath: 'spec.template.spec.containers[0].image'
+          value: ${{ env.REGISTRY }}/mj-mirror/backend:${{ steps.vars.outputs.sha_short }}
+          repository: miaojuncn/gitops-manifests
+          workDir: gitops-manifests
+          message: 'Update image version to ${{ steps.vars.outputs.sha_short }}'
+          token: ${{ secrets.TOKEN }}
