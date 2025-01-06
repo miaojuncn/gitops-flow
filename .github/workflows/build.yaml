@@ -56,3 +56,4 @@ jobs:
 #          commitChange: true
           message: 'Update image version to ${{ steps.vars.outputs.sha_short }}'
           token: ${{ secrets.TOKEN }}
+          workDir: gitops-manifests
