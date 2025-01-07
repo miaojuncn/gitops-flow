@@ -7,4 +7,4 @@ RUN pip install -r requirements.txt --no-cache-dir
 
 COPY . .
 
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+CMD ["sh", "-c", "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
