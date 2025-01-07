@@ -6,6 +6,5 @@ COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt --no-cache-dir
 
 COPY . .
-RUN chmod +x start.sh
 
-CMD [ "./start.sh" ]
+CMD [ "/bin/sh", "-c", "python3 app.py" ]
