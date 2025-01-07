@@ -7,4 +7,4 @@ RUN pip install -r requirements.txt --no-cache-dir
 
 COPY . .
 
-CMD ["bash", "-c", "python app.py"]
+CMD ["bash", "-c", "start.sh"]
